@@ -5,17 +5,17 @@ This project was created to practice Object-Oriented Programming (OOP) and worki
 
 ## Features
 
-1.Add new password entries (service / login / password).
-2.Store data in a file with encryption (Fernet).
-3.View all saved entries.
-4.Search and delete entries.
+1. Add new password entries (service / login / password).
+2. Store data in a file with encryption (Fernet).
+3. View all saved entries.
+4. Search and delete entries.
 
 ## Tech Stack
 
-1.Python 3.x
-2.cryptography
-3.colorama (optional, for colored output)
-4.pyfiglet (optional, for ASCII art)
+1. Python 3.x
+2. cryptography
+3. colorama (optional, for colored output)
+4. pyfiglet (optional, for ASCII art)
 
 
 ## Installation
