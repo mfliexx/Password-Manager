@@ -1,16 +1,16 @@
-##Password Manager
+# Password Manager
 
 A simple password manager built with Python.
 This project was created to practice Object-Oriented Programming (OOP) and working with the cryptography library
 
-#Features
+## Features
 
 1.Add new password entries (service / login / password).
 2.Store data in a file with encryption (Fernet).
 3.View all saved entries.
 4.Search and delete entries.
 
-#Tech Stack
+## Tech Stack
 
 1.Python 3.x
 2.cryptography
@@ -18,7 +18,7 @@ This project was created to practice Object-Oriented Programming (OOP) and worki
 4.pyfiglet (optional, for ASCII art)
 
 
-#Installation
+## Installation
 
 Clone the repository:
 
