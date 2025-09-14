@@ -1,7 +1,23 @@
-from colorama import init, Fore
 import pyfiglet
+from colorama import Fore, init
+from cryptography.fernet import Fernet
+import os
+
 
 init(autoreset=True)
+
+KEY_FILE = "key.key"
+
+if not os.path.exists(KEY_FILE):
+   key = Fernet.generate_key()
+   with open(KEY_FILE, "wb") as f:
+        f.write(key)
+
+else:
+    with open(KEY_FILE, "rb") as f:
+        key = f.read()
+
+cipher = Fernet(key)
 
 
 class PasswordEntry:
@@ -11,14 +27,16 @@ class PasswordEntry:
         self.password = password
 
     def __str__(self):
-        return f"{self.service}: {self.login} / {self.password}"
+        decrypted_password = cipher.decrypt(self.password).decode()
+        return f"{self.service}: {self.login} / {decrypted_password}"
     
 class PasswordManager:
 
     entries = []
 
     def add_entry(self, service, login, password):
-        entry = PasswordEntry(service, login, password)
+        encrypted_password = cipher.encrypt(password.encode())
+        entry = PasswordEntry(service, login, encrypted_password)
         self.entries.append(entry)
 
     def list_entries(self):
@@ -38,9 +56,6 @@ class PasswordManager:
             return True
         return False
     
-
-
-
 manager = PasswordManager()
 
 while True:
@@ -59,6 +74,7 @@ while True:
         password = input("Password: ")
         manager.add_entry(service, login, password)
         print(Fore.LIGHTBLACK_EX + "Entry added.")
+       
 
     if choice == "2":
         manager.list_entries()
@@ -70,6 +86,7 @@ while True:
             print(entry)
         else:
             print(Fore.LIGHTRED_EX + "Entry not found.")
+            
 
     if choice == "4":
         service = input("Service to delete: ")
@@ -77,8 +94,11 @@ while True:
             print("Entry deleted.")
         else:
             print(Fore.LIGHTRED_EX + "Entry not found.")
+        
+
 
     if choice == "5":
         break
+
 
 
