@@ -22,7 +22,8 @@ This project was created to practice Object-Oriented Programming (OOP) and worki
 
 Clone the repository:
 
-git clone https://github.com/your-username/Password-Manager.git
+git clone https://github.com/mfliexx/Password-Manager.git
+
 cd Password-Manager
 
 Install dependencies:
